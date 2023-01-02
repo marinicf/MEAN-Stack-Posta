@@ -1,0 +1,39 @@
+<!-- <h1>Angular Google Map Multiple Markers Example - HDTuto.com</h1>
+<agm-map [latitude]="45.815399" [longitude]="15.966568">
+  <agm-marker *ngFor="let marker of loadedUredi"
+  [latitude]="marker.lat"
+  [longitude]="marker.lng">
+    <agm-info-window #infoWindow>
+      {{ marker.mjesto + '  ' + marker.ulica }}
+    </agm-info-window>
+  </agm-marker>
+</agm-map> -->
+<div class="row">
+  <form #puForm="ngForm" (ngSubmit)="onEnterSubmit($event, puForm)">
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" style="width:450px !important">
+        <mat-label>Pretraži urede</mat-label>
+        <input matInput type="number" name="pu" id="pu" [(ngModel)]="searchText" required minlength="5">
+        <mat-hint align="end">Unesite broj poštanskog ureda</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <button mat-raised-button type="submit" color="primary" [disabled]="!puForm.valid">Submit</button>
+    </div>
+  </form>
+</div>
+<div class="row">
+  <div class="alert alert-danger" *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+</div>
+
+<!-- <input
+    id="pac-input"
+    class="controls"
+    type="text"
+    placeholder="Search Box"
+  />
+<div id="map"></div> -->
+
+

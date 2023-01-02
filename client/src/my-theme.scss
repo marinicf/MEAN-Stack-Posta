@@ -1,0 +1,27 @@
+// @use '@angular/material' as mat;
+
+// @include mat.core();
+
+// $my-primary: mat.define-palette(mat.$mat-mypalet, 500);
+// $my-accent: mat.define-palette(mat.$mat-mypalet, A200, A100, A400);
+
+// // The "warn" palette is optional and defaults to red if not specified.
+// $my-warn: mat.define-palette(mat.$red-palette);
+
+// $my-theme: mat.define-light-theme((
+//  color: (
+//    primary: $my-primary,
+//    accent: $my-accent,
+//  )
+// ));
+
+// @include mat.all-component-themes($my-theme);
+@import '@angular/materials/theming';
+
+@include mat.core();
+
+$my-theme-primary: mat.palette($mat-mypalet);
+$my-theme-accent: mat.palette($mat-mypalet, A200, A100, A400);
+$my-theme: mat-light-theme($my-theme-primary, $my-theme-accent);
+
+@include angular-material-theme($my-theme)

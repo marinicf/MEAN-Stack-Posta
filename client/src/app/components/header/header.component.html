@@ -1,0 +1,30 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="navber-header">
+      <a routerLink="/" class="navbar-brand"><img src="../../../assets/img/logo.svg"></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/posta">Poštanski uredi</a></li>
+        <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Prijava</a></li>
+        <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/map">Map</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a style="cursor: pointer;" *ngIf="isAuthenticated" (click)="onLogout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+<header>
+  <h1 class="logo">Hrvatska <br/> Pošta</h1>
+  <nav>
+    <ul class="nav_links">
+      <li routerLinkActive="active"><a routerLink="/posta">Poštanski uredi</a></li>
+      <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Prijava</a></li>
+      <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/map">Map</a></li>
+    </ul>
+  </nav>
+  <button *ngIf="isAuthenticated" (click)="onLogout()" style="margin-bottom: 10px">Logout</button>
+</header>

@@ -1,0 +1,90 @@
+<div *ngIf="oUred">
+  <h3>Detaljne informacije</h3>
+  <table class="table table-stript detail_table">
+    <tbody>
+      <tr>
+        <th>Poštanisk ured:</th>
+        <td>{{oUred.pu}}</td>
+      </tr>
+      <tr>
+        <th>Ulica:</th>
+        <td>{{oUred.ulica}}</td>
+      </tr>
+      <tr>
+        <th>Mjesto:</th>
+        <td>{{oUred.mjesto}}</td>
+      </tr>
+      <tr>
+        <th>Grad:</th>
+        <td>{{oUred.grad}}</td>
+      </tr>
+      <tr>
+        <th>Županija:</th>
+        <td>{{oUred.zupanija}}</td>
+      </tr>
+      <tr>
+        <th>Telefon:</th>
+        <td>{{oUred.tel}}</td>
+      </tr>
+      <tr>
+        <th>Fax:</th>
+        <td>{{oUred.fax}}</td>
+      </tr>
+      <tr>
+        <th>Vrsta PU:</th>
+        <td>{{oUred.vrsta_pu}}</td>
+      </tr>
+      <tr>
+        <th>Napomena:</th>
+        <td>{{oUred.napomena}}</td>
+      </tr>
+      <tr>
+        <th>Ostale usluge:</th>
+        <td class="col-11" >{{oUred.ostale_usluge}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<h3>Trenutno radno vrijeme</h3>
+<table class="table table-stript detail_table" *ngIf="rvUred">
+  <tbody>
+    <tr>
+      <th>Ponedjeljak:</th>
+      <td>{{rvUred.pon_od + ' - '+ rvUred.pon_do}}</td>
+    </tr>
+    <tr>
+      <th>Utorak:</th>
+      <td>{{rvUred.uto_od + ' - '+ rvUred.uto_do}}</td>
+    </tr>
+    <tr>
+      <th>Srijeda:</th>
+      <td>{{rvUred.sri_od + ' - '+ rvUred.sri_do}}</td>
+    </tr>
+    <tr>
+      <th>Četvrtak:</th>
+      <td>{{rvUred.cet_od + ' - '+ rvUred.cet_do}}</td>
+    </tr>
+    <tr>
+      <th>Petak:</th>
+      <td>{{rvUred.pet_od + ' - '+ rvUred.pet_do}}</td>
+    </tr>
+    <tr>
+      <th>Subota:</th>
+      <td>{{rvUred.sub_od + ' - '+ rvUred.sub_do}}</td>
+    </tr>
+    <tr>
+      <th>Nedjelja:</th>
+      <td>{{rvUred.ned_od + ' - '+ rvUred.ned_do}}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<div *ngIf="lat">
+  <h3>Geolokacijska pozicija poštanskog ureda</h3>
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</div>

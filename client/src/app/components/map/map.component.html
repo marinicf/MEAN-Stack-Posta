@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-6">
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Unesite ime grada</mat-label>
+        <input matInput type="text" name="grad" id="grad" [(ngModel)]="searchText">
+      </mat-form-field>
+      <section>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Odaberite ured</mat-label>
+          <mat-select [(ngModel)]="selectedDevice" (ngModelChange)="onChange($event)">
+            <mat-option *ngFor="let ured of loadedUredi | filter:searchText;" [value]="ured.pu">
+            {{ ured.ulica+' '+ured.mjesto }}
+           </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>
+  </div>
+  <div class="col-md-6">
+      <button mat-raised-button color="accent" (click)="onPronadiPutClick()">Pronađi najkraći put</button>
+  </div>
+</div>
+<hr>
+<div class="row" style="margin-bottom: 50px;">
+  <div class="col-md-5">
+    <div class="odabrani-uredi">
+      <mat-list *ngFor="let city of odabraniGradovi">
+        <mat-list-item *ngIf="city">
+          <mat-icon matListIcon color="accent" (click)="onDelete(city.id)" style="cursor: pointer;">delete</mat-icon>
+          <h3 matLine> {{city.name}}</h3>
+          <p matLine>
+            <span> {{city.id}} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div *ngIf="put">
+      <h2><b>Redoslijed obilaska:</b></h2>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">R.br.</th>
+          <th scope="col">Id</th>
+          <th scope="col">Ulica</th>
+          <th scope="col">Mjesto</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr *ngFor="let i of coordinate">
+            <td scope="row">{{i.counter}}</td>
+            <td scope="row">{{i.id}}</td>
+            <td scope="row">{{i.ulica}}</td>
+            <td scope="row">{{i.mjesto}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="map-div">
+      <div *ngIf="put">
+        <app-loading-spiner *ngIf="spinner"></app-loading-spiner>
+        <h2><b>Ukupna udaljenost:</b> {{ globalUdaljenst + ' km' }}</h2>
+        <agm-map
+        [latitude]='lat'
+        [longitude]='long'
+        [zoom]='zoom'>
+         <agm-marker
+             *ngFor="let marker of coordinate;"
+              [latitude]="marker.lat"
+              [longitude]="marker.lng"
+              [label]="marker.counter">
+                <agm-info-window #infoWindow>
+                  {{ marker.id + ' '+ marker.ulica}}
+                </agm-info-window>
+         </agm-marker>
+         <agm-polyline [visible]="true" [strokeWeight]="3" [strokeColor]="'#db0707'">
+           <agm-polyline-point *ngFor="let coord of coordinate" [latitude]="coord.lat" [longitude]="coord.lng">
+
+           </agm-polyline-point>
+         </agm-polyline>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,12 @@
+.full {
+  width: 50vw;
+  height: 50vw;
+}
+agm-map {
+  width: 100%;
+  height: 500px;
+}
+
+hr{
+  border-top: 1px solid rgba(74, 74, 74, 0.5);
+}

@@ -1,0 +1,13 @@
+.detail_table{
+  width: 40vw;
+}
+
+.col-11{
+  overflow: auto;
+  height: 70px;
+}
+
+agm-map{
+  height: 500px;
+  width: 650px;
+}

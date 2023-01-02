@@ -1,0 +1,18 @@
+<mat-form-field appearance="outline" style="width:450px !important" color="accent">
+  <mat-label>Pretraži urede</mat-label>
+  <input matInput type="text" name="grad" id="grad" [(ngModel)]="searchText">
+  <mat-hint align="end">Unesite ime grada</mat-hint>
+</mat-form-field>
+<hr>
+<p *ngIf="loadedUredi.length < 1 && !isFetching">Nema ucitanih ureda</p>
+<div *ngIf="loadedUredi.length >= 1 && !isFetching">
+  <app-posta-item
+    *ngFor = "let item of loadedUredi | filter: searchText; let i = index"
+    [ured] = "item"
+    [index] = "item.pu"
+  >
+  </app-posta-item>
+</div>
+<p *ngIf="isFetching">Loading...</p>
+
+
